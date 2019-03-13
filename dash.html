@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DRS</title>
+    <style>
+      .container {
+        margin: auto;
+        width: 40%;
+        padding: 15% 0;
+        height: 20%;
+        text-align: center;
+        background: white;
+      }
+      .button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      /*.drscbk {
+              display: block;
+              position: relative;
+              padding-left: 35px;
+              margin-bottom: 12px;
+              cursor: pointer;
+              font-size: 22px;
+              width: fit-content;
+              margin: auto;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+            }*/
+
+      /* Hide the browser's default radio button */
+      /* .drscbk input {
+              position: absolute;
+              opacity: 0;
+              cursor: pointer;
+            }*/
+
+      /* Create a custom radio button */
+      /* .checkmark {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 25px;
+              width: 25px;
+              background-color: #eee;
+              border-radius: 50%;
+            }*/
+
+      /* On mouse-over, add a grey background color */
+      /* .drscbk:hover input ~ .checkmark {
+              background-color: #ccc;
+            }*/
+
+      /* When the radio button is checked, add a blue background */
+      /*.drscbk input:checked ~ .checkmark {
+              background-color: #2196f3;
+            }*/
+
+      /* Create the indicator (the dot/circle - hidden when not checked) */
+      /* .checkmark:after {
+              content: "";
+              position: absolute;
+              display: none;
+            }*/
+
+      /* Show the indicator (dot/circle) when checked */
+      /* .drscbk input:checked ~ .checkmark:after {
+              display: block;
+            }*/
+
+      /* Style the indicator (dot/circle) */
+      /* .drscbk .checkmark:after {
+              top: 9px;
+              left: 9px;
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+              background: white;
+
+
+            }*/
+    </style>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  </head>
+  <body style="background:darkslategray">
+    <div class="container">
+      <div>
+        <h2 id="main">Dashboard</h2>
+        <!--<div class="reorder">
+          <h4>Automatically reorder:</h4>
+          <form action="">
+            <label class="drscbk"
+              >One
+              <input type="radio" checked="checked" name="radio" />
+              <span class="checkmark"></span>
+            </label>
+            <label class="drscbk"
+              >Two
+              <input type="radio" name="radio" />
+              <span class="checkmark"></span>
+            </label>
+          </form>
+        </div>-->
+        <div class="threshold">
+          <h4>Enter threshold value in percentage</h4>
+          <form action="jar.html" method="GET">
+            <div><input type="text" name="threshold" id="threshold" /></div>
+          </form>
+        </div>
+        <div class="status" style="margin-top:5%">
+          <a href="jar.html" class="button">View Jar</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

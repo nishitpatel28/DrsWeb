@@ -1,0 +1,46 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="index.css" />
+    <script src="verify.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="login-group">
+      <div class="form">
+        <form class="login-form" action="dash.html" method="POST">
+          <div id="email">
+            <input
+              type="email"
+              name="emailid"
+              id="emailid"
+              Placeholder="Email"
+            />
+          </div>
+          <div id="password">
+            <input
+              type="password"
+              name="pass"
+              id="pass"
+              Placeholder="Password"
+            />
+          </div>
+          <div class="input">
+            <input type="submit" value="Submit" onclick="verify()" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>
+    function verify() {
+      var email = document.forms["login-from"]["emailid"].value;
+      var pass = document.forms["login-from"]["pass"].value;
+      if (email == "drs@test.com" && pass == "test") {
+        return true;
+      }
+    }
+  </script>
+</html>

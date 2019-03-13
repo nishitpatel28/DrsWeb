@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--<meta http-equiv="refresh" content="5" />-->
+    <title>DRS</title>
+    <style>
+      .container {
+        margin: auto;
+        width: 60%;
+        padding: 15%;
+        height: 33%;
+        text-align: center;
+        background: white;
+      }
+      #button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        visibility: hidden;
+      }
+      .square {
+        height: 50px;
+        width: 50px;
+        background-color: #555;
+      }
+    </style>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  </head>
+  <body style="background:darkslategray">
+    <div class="container">
+      <div>
+        <h2 id="Jar Status">Quantity in Jar</h2>
+        <div
+          class="progress"
+          style="height:24px;width:100%;background:rgb(187, 182, 182)"
+        >
+          <div class="sample" id="demo" style="height:24px"></div>
+        </div>
+        <div class="threshold">
+          <h4 id="th"></h4>
+          <h4 id="nanCheck" style="visibility:hidden">
+            <a href="dash.html">Click here to set Critical Value</a>
+          </h4>
+        </div>
+        <div class="reorder">
+          <button id="button">Replenish Items</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      var urlParams = new URLSearchParams(window.location.search);
+      var myParam = urlParams.get("threshold");
+      var param = parseInt(myParam);
+      var print = "Critical limit is set to: " + param + "%";
+      if (isNaN(param)) {
+        document.getElementById("nanCheck").style.visibility = "visible";
+      } else if (!isNaN(param)) {
+        document.getElementById("th").innerHTML = print;
+      }
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var stat = JSON.parse(this.responseText);
+          var slot = stat.feeds[0].field1;
+          var slotValue = parseInt(slot);
+          if (slotValue < 10) {
+            document.getElementById("demo").style.background = "green";
+            document.getElementById("demo").style.width = "100%";
+          } else if (slotValue > 10 && slotValue < 20) {
+            document.getElementById("demo").style.background = "orange";
+            document.getElementById("demo").style.width = "66%";
+          } else if (slotValue > 20) {
+            document.getElementById("demo").style.background = "red";
+            document.getElementById("demo").style.width = "33%";
+            document.getElementById("button").style.visibility = "visible";
+          }
+        }
+      };
+      xhttp.open(
+        "GET",
+        "https://api.thingspeak.com/channels/727900/fields/1.json?api_key=564GKK6O0IZE5ZJS&results=1",
+        true
+      );
+      xhttp.send();
+    </script>
+  </body>
+</html>
